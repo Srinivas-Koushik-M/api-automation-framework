@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual Environment
+.venv/
+venv/
+
+# PyCharm
+.idea/
+
+# Logs
+logs/
+
+# Reports
+reports/
+allure-results/
+allure-report/
+htmlcov/
+
+# Pytest
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Environment Variables
+.env
+
+# Coverage
+.coverage
+coverage.xml

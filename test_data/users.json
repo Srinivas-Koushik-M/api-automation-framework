@@ -1,0 +1,7 @@
+{
+    "valid_user": {
+        "firstName": "test first name",
+        "lastName": "test last name",
+        "age": 28
+    }
+}
