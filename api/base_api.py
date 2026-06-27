@@ -73,3 +73,5 @@ class BaseAPI:
     @staticmethod
     def delete(endpoint, auth_required=False, **kwargs):
         return BaseAPI.request("DELETE", endpoint, auth_required=auth_required, **kwargs)
+
+    # Retry Manager
