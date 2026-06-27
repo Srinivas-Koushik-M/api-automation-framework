@@ -1,6 +1,5 @@
 # Logger Utility
-# logger 1commit
-import logging
+# Logger Utility
 import os
 import sys
 
