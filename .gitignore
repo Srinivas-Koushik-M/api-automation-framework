@@ -17,7 +17,9 @@ logs/
 reports/
 allure-results/
 allure-report/
+report.html
 htmlcov/
+
 
 # Pytest
 .pytest_cache/
