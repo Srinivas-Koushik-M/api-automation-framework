@@ -1,6 +1,10 @@
-class Config:
+import os
 
-    BASE_URL = "https://dummyjson.com"
+
+class Config:
+    BaseURL = os.getenv("BASE_URL",
+        "https://dummyjson.com")
+    # BASE_URL = "https://dummyjson.com"
     TIMEOUT = 30
     DEFAULT_HEADERS = {
         "Accept": "application/json",
