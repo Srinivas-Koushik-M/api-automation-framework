@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    Base_URL = os.getenv(
+    BASE_URL = os.getenv(
         "BASE_URL",
         "https://dummyjson.com")
     # BASE_URL = "https://dummyjson.com"
