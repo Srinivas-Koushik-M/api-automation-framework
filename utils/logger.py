@@ -2,6 +2,7 @@
 # Logger Utility
 import os
 import sys
+import logging
 
 
 class Logger:
