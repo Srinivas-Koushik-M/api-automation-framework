@@ -1,8 +1,8 @@
 import os
 
-
 class Config:
-    BaseURL = os.getenv("BASE_URL",
+    Base_URL = os.getenv(
+        "BASE_URL",
         "https://dummyjson.com")
     # BASE_URL = "https://dummyjson.com"
     TIMEOUT = 30
