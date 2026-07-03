@@ -2,6 +2,14 @@ pipeline {
 
     agent any
 
+    parameters {
+        choice(
+            name: 'TEST_SUITE',
+            choices: ['all', 'smoke', 'regression'],
+            description: 'Select test suite to run'
+        )
+    }
+
     stages {
 
         stage('Checkout') {
@@ -31,10 +39,17 @@ pipeline {
         stage('Run API Tests') {
             steps {
                 sh '''
-                .venv/bin/python -m pytest tests -v \
-                  --html=report.html \
-                  --self-contained-html \
-                  --alluredir=allure-results
+                if [ "$TEST_SUITE" = "all" ]; then
+                    .venv/bin/python -m pytest tests -v \
+                      --html=report.html \
+                      --self-contained-html \
+                      --alluredir=allure-results
+                else
+                    .venv/bin/python -m pytest tests -v -m "$TEST_SUITE" \
+                      --html=report.html \
+                      --self-contained-html \
+                      --alluredir=allure-results
+                fi
                 '''
             }
         }
