@@ -1,3 +1,4 @@
+import allure
 import pytest
 
 from api.users_api import UsersAPI
@@ -37,6 +38,14 @@ def test_get_users_with_limit(limit, skip):
     ResponseValidator.validate_list_size(data["users"], limit)
 
 
+
+
+
+@allure.title("Get Users Details")
+@allure.description("Verify get users details successfully")
+@allure.feature("Get Users Details")
+@allure.story("Get Users Details")
+@allure.suite(allure.severity_level.CRITICAL)
 @pytest.mark.parametrize(
     "user_id",
     [1, 5, 10]
