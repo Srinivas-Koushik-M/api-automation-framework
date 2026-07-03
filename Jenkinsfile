@@ -10,9 +10,19 @@ pipeline {
             }
         }
 
+        stage('Setup Virtual Environment') {
+            steps {
+                sh '''
+                rm -rf .venv allure-results allure-report report.html
+                python3 -m venv .venv
+                '''
+            }
+        }
+
         stage('Install Dependencies') {
             steps {
                 sh '''
+                .venv/bin/python -m pip install --upgrade pip
                 .venv/bin/python -m pip install -r requirements.txt
                 '''
             }
@@ -22,9 +32,9 @@ pipeline {
             steps {
                 sh '''
                 .venv/bin/python -m pytest tests -v \
-                --html=report.html \
-                --self-contained-html \
-                --alluredir=allure-results
+                  --html=report.html \
+                  --self-contained-html \
+                  --alluredir=allure-results
                 '''
             }
         }
@@ -32,17 +42,14 @@ pipeline {
         stage('Generate Allure Report') {
             steps {
                 sh '''
-                allure generate allure-results --clean -o allure-report
+                /opt/homebrew/bin/allure generate allure-results --clean -o allure-report
                 '''
             }
         }
-
     }
 
     post {
-
         always {
-
             publishHTML(target: [
                 reportDir: '.',
                 reportFiles: 'report.html',
@@ -50,9 +57,6 @@ pipeline {
             ])
 
             archiveArtifacts artifacts: 'allure-report/**', fingerprint: true
-
         }
-
     }
-
 }
